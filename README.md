@@ -11,7 +11,7 @@
     </clipboard-copy>
   </div></div>
   <ol start="2" dir="auto">
-<li>Заполнение переменных в файле config.py --- <a href="https://vkhost.github.io/" rel="nofollow">Токен пользователя можно получить здесь</a></li>
+<li>Заполнение переменных в файле config.py     <a href="https://vkhost.github.io/" rel="nofollow">Токен пользователя можно получить здесь</a></li>
 <li>Запуск файла interface.py</li>
 <li>Взаимодействие с ботом начинается введения любого сообщения в диалоге с сообществом, чей токен (group_token) указан в файле config.py</li>
 </ol>
