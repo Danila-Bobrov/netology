@@ -11,9 +11,9 @@
     </clipboard-copy>
   </div></div>
   <ol start="2" dir="auto">
-<li>Заполнение переменных в файле config.py     <a href="https://vkhost.github.io/" rel="nofollow">Токен пользователя можно получить здесь</a></li>
+<li>Заполнение переменных в файле config.py     <a href="https://vkhost.github.io/" rel="nofollow">Токен пользователя (acces_token) можно получить здесь</a></li>
 <li>Запуск файла interface.py</li>
-<li>Взаимодействие с ботом начинается введения любого сообщения в диалоге с сообществом, чей токен (group_token) указан в файле config.py</li>
+<li>Взаимодействие с ботом начинается введения любого сообщения в диалоге с сообществом, чей токен (community_token) указан в файле config.py</li>
 </ol>
 <h2 tabindex="-1" dir="auto"><a id="user-content-задание-к-дипломной-работе" class="anchor" aria-hidden="true" href="#задание-к-дипломной-работе"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"></a>Задание к дипломной работе</h2>
 <p dir="auto">Необходимо разработать приложение для знакомств, эталоном которого является Tinder. Приложение предоставляет простой интерфейс для выбора понравившегося человека.</p>
