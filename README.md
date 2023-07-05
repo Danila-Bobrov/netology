@@ -9,6 +9,7 @@
     <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="    pip install vk_api
     pip install psycopg2" tabindex="0" role="button">
     </clipboard-copy>
+    
   </div></div>
   <ol start="2" dir="auto">
 <li>Заполнение переменных в файле config.py     <a href="https://vkhost.github.io/" rel="nofollow">Токен пользователя acces_token можно получить здесь</a></li>
