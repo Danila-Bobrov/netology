@@ -1,51 +1,38 @@
-import psycopg2 as pg
+import psycopg2 as pg2
 from config import host, user, password, db_name
 
-with pg.connect(
-        host=host,  # 127.0.0.1 / localhost
-        user=user,  # postgres
+with pg2.connect(
+        host=host,
+        user=user,
         password=password,
         database=db_name,
-) as conn:
+                ) as conn:
     conn.autocommit = True
 
 
-def create_table_seen_partner():
-    """Create table seen_person"""
+def create_db_users_base():
     with conn.cursor() as cursor:
         cursor.execute(
-            """CREATE TABLE IF NOT EXISTS seen_person(
+            """CREATE TABLE IF NOT EXISTS users_base(
             id serial,
-            id_vk varchar(50) PRIMARY KEY);"""
+            users_list varchar(50) PRIMARY KEY);"""
         )
 
 
-def insert_data_seen_partner(id_vk):
-    """Inserting data into the seen_users table"""
+def insert_data_users_base(user_id):
     with conn.cursor() as cursor:
         cursor.execute(
-            f"""INSERT INTO seen_person (id_vk) 
+            """INSERT INTO users_base (users_list) 
            VALUES (%s)""",
-            (id_vk,)
+            (user_id,)
         )
 
 
-def check():
+def delete_users_base():
     with conn.cursor() as cursor:
         cursor.execute(
-            f"""SELECT sp.id_vk
-            FROM seen_person AS sp;"""
-        )
-        return cursor.fetchall()
-
-
-def delete_table_seen_partner():
-    """Delete table seen_person by cascade"""
-    with conn.cursor() as cursor:
-        cursor.execute(
-            """DROP TABLE  IF EXISTS seen_person CASCADE;"""
+            """DROP TABLE  IF EXISTS users_base CASCADE;"""
         )
 
 
-create_table_seen_partner()
-print("Database was created!")
+print("users_base was created!")
