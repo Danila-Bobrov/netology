@@ -41,7 +41,7 @@ class BotInterface:
 
                     for data in params_list:
                         if params_list[data] is None:
-                            self.message_send(event.user_id, f'напишите {data}:')
+                            self.message_send(event.user_id, f'Укажите {data}:')
 
                             for i in longpoll.listen():
                                 if i.type == VkEventType.MESSAGE_NEW and i.to_me:
