@@ -1,8 +1,11 @@
-user_token = ''''''  # токен пользователя
+# Токен пользователя
+acces_token = ''' '''
 
-group_token = ''''''  # токен сообщества
+# Токен сообщества
+community_token = ''' '''
 
-host = ''
-user = ''
-password = ''
-db_name = ''
+# Параметры для подлючения к базе данных
+host = ' '
+user = ' '
+password = ' '
+db_name = ' '
