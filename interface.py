@@ -60,16 +60,16 @@ class BotInterface:
                 elif command == 'поиск':
                     dict_params = self.users_info_profile[event.user_id]['params']
                     users = self.api.serch_users(dict_params, self.offset)
-                    users_l = users
-                    while len(users_l) == 0:
+                    users_list = users
+                    while len(users_list) == 0:
                         self.offset += 1
-                    user = users_l[0]
+                    user = users_list[0]
                     if self.offset == 50:
                         users = self.api.serch_users(dict_params, self.offset)
                         self.offset = 0
-                        while len(users_l) == 0:
+                        while len(users_list) == 0:
                             self.offset += 1
-                        user = users_l[0]
+                        user = users_list[0]
                     self.message_send(event.user_id, f'Начинаем поиск')
                     photos_user = self.api.get_photos(user['id'])
                     attachment = []
