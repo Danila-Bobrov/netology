@@ -2,9 +2,8 @@ import vk_api
 from vk_api.longpoll import VkLongPoll, VkEventType
 from vk_api.utils import get_random_id
 from core import VkTools
-from data_store import *
+from data_store import create_db_users_base, insert_data_users_base, delete_users_base
 from config import acces_token, community_token
-
 
 class BotInterface:
     def __init__(self, community_token, acces_token):
@@ -41,7 +40,7 @@ class BotInterface:
 
                     for data in params_list:
                         if params_list[data] is None:
-                            self.message_send(event.user_id, f'Укажите {data}:')
+                            self.message_send(event.user_id, f'напишите {data}:')
 
                             for i in longpoll.listen():
                                 if i.type == VkEventType.MESSAGE_NEW and i.to_me:
@@ -60,13 +59,17 @@ class BotInterface:
                                       )
                 elif command == 'поиск':
                     dict_params = self.users_info_profile[event.user_id]['params']
-                    create_db_users_base()
                     users = self.api.serch_users(dict_params, self.offset)
-
-                    while len(users) == 0:
+                    users_l = users
+                    while len(users_l) == 0:
                         self.offset += 1
+                    user = users_l[0]
+                    if self.offset == 50:
                         users = self.api.serch_users(dict_params, self.offset)
-                    user = users[0]
+                        self.offset = 0
+                        while len(users_l) == 0:
+                            self.offset += 1
+                        user = users_l[0]
                     self.message_send(event.user_id, f'Начинаем поиск')
                     photos_user = self.api.get_photos(user['id'])
                     attachment = []
@@ -82,12 +85,10 @@ class BotInterface:
                                       )
                     self.message_send(event.user_id, f'Ссылка: vk.com/id{user["id"]}')
                     self.offset += 1
-
                     try:
                         insert_data_users_base(user_id)
                     except:
                         pass
-
                 elif command == 'удалить':
                     delete_users_base()
                     create_db_users_base()
@@ -108,5 +109,6 @@ class BotInterface:
 
 if __name__ == '__main__':
     bot = BotInterface(community_token, acces_token)
+    create_db_users_base()
     print('Bot was created!')
     bot.event_handler()
